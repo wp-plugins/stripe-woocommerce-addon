@@ -1,4 +1,4 @@
-==== Stripe Woocommerce Addon ====
+==== Stripe WooCommerce Addon ====
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: htt ps://wordpress.org/plugins/stripe-woocommerce-addon/
