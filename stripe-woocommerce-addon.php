@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Stripe WooCommerce Addon.
+ * Plugin Name: Stripe WooCommerce Addon
  * Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
  * Description: Add a feature in wocommerce for customers to pay via stripe.
  * Version: 1.0.0
