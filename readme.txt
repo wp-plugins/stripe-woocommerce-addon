@@ -1,16 +1,16 @@
 ==== Stripe Woocommerce Addon ====
-Contributors:Syed Nazrul Hassan
+Contributors:nazrulhassanmca
 Plugin Name:Stripe Woocommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
 Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method
 Author URI: https://nazrulhassan.wordpress.com/
-Author: Syed Nazrul Hassan
+Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassanmca@gmail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 3.8 
 Tested up to: 4.0.1 & Woocommerce 2.3
 Stable tag: 1.0.1
 Version: 1.0
-License: GPLv3
+License: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 
