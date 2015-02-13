@@ -219,9 +219,6 @@ if(class_exists('WC_Payment_Gateway'))
 		  }
 		  
 		}
-		
-
-
 
 
 		} // end of function process_payment()
