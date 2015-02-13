@@ -6,7 +6,7 @@
  * Version: 1.0.0
  * Author: Syed Nazrul Hassan
  * Author URI: https://nazrulhassan.wordpress.com/
- * License: A short license name. Example: GPL3
+ * License: GPL3
  */
 
 function stripe_init()
