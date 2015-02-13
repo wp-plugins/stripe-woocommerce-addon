@@ -28,32 +28,21 @@ This plugin uses Stripe API version  2015-01-26 to create tokens and charge cred
 
 == Installation ==
 
-1) Upload 'stripe-woo-commerce' folder to the '/wp-content/plugins/' directory
+*Upload 'stripe-woo-commerce' folder to the '/wp-content/plugins/' directory*
+*Activate 'Stripe Woocommerce Addon' from wp plugin lists in admin area*
+*Plugin will appear in settings of woocommerce*
+*You can set the addon settings from wocommmerce->settings->Checkout->Stripe Settings for Cards*
+*You can check for Testing Card No Here https://stripe.com/docs/testing*
 
-2) Activate 'Stripe Woocommerce Addon' from wp plugin lists in admin area
-
-3) Plugin will appear in settings of woocommerce
-
-4) You can set the addon settings from wocommmerce->settings->Checkout->Stripe Settings for Cards
-
-5) You can check for Testing Card No Here https://stripe.com/docs/testing
-
-6) Integrated Stripe Libraries
 
 == Frequently Asked Questions ==
-1) You need to have woocoommerce plugin installed to make this plugin work
-
-2) You need to follow The Screeenshot 1 to obtain API keys from Stripe https://dashboard.stripe.com/
-
-3) This plugin works on test & live api keys. 
-
-4) This plugin readily works on local.
-
-5) This plugin does nor requires SSL.
-
-6) This plugin does not store Card Details anywhere.
-
-7) This plugin comes packed with Official Stripe Libraries
+*You need to have woocoommerce plugin installed to make this plugin work*
+*You need to follow The Screeenshot 1 to obtain API keys from Stripe https://dashboard.stripe.com/*
+*This plugin works on test & live api keys.* 
+*This plugin readily works on local.*
+*This plugin does nor requires SSL.*
+*This plugin does not store Card Details anywhere.*
+*This plugin comes packed with Official Stripe Libraries*
 
 == Changelog ==
 This is first version no known errors found
