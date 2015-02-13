@@ -2,7 +2,7 @@
 Contributors:Syed Nazrul Hassan
 Plugin Name:Stripe Woocommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress
+Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method
 Author URI: https://nazrulhassan.wordpress.com/
 Author: Syed Nazrul Hassan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassanmca@gmail.com&item_name=Donation+Stripe+Woocommerce+Addon
