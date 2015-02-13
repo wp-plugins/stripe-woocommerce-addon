@@ -1,13 +1,13 @@
 <?php
-/*
-Plugin Name: Stripe Woocommerce Addon
-Plugin URI: https://nazrulhassan.wordpress.com/
-Description: Add a feature in wocommerce to pay via stripe. 
-Version: 1.0.0
-Author: Syed Nazrul Hassan
-Author URI: https://nazrulhassan.wordpress.com/
-*/
-
+/**
+ * Plugin Name: Stripe Woocommerce Addon.
+ * Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
+ * Description: Add a feature in wocommerce for customers to pay via stripe.
+ * Version: 1.0.0
+ * Author: Syed Nazrul Hassan
+ * Author URI: https://nazrulhassan.wordpress.com/
+ * License: A short license name. Example: GPL3
+ */
 
 function stripe_init()
 {
