@@ -24,6 +24,7 @@ This plugin uses Stripe API version  2015-01-26 to create tokens and charge cred
 01. Screenshot 1 - Api Key Location 
 02. Screenshot 2 - Admin Settings of Addon
 03. Screenshot 3 - Checkout Page Form
+04. Screeensho 4 - This plugin passes Order Id in stripe meta and billing email in description
 
 == Installation ==
 
