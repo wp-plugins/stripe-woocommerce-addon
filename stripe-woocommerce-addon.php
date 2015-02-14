@@ -2,16 +2,20 @@
 /**
  * Plugin Name: Stripe WooCommerce Addon
  * Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
- * Description: Add a feature in wocommerce for customers to pay via stripe.
+ * Description: Add a feature in wocommerce for customers to pay with Cards Via Stripe.
  * Version: 1.0.0
  * Author: Syed Nazrul Hassan
  * Author URI: https://nazrulhassan.wordpress.com/
- * License: GPL3
+ * License: GPL2
  */
 
 function stripe_init()
 {
 
+if(!class_exists('Stripe'))
+{
+	include(plugin_dir_path( __FILE__ )."lib/Stripe.php");
+}
 function add_stripe_gateway_class( $methods ) 
 {
 	$methods[] = 'WC_Stripe_Gateway'; 
@@ -30,7 +34,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->id               = 'stripe';
 		$this->icon             = apply_filters( 'woocommerce_stripe_icon', plugins_url( 'images/stripe.png' , __FILE__ ) );
 		$this->has_fields       = true;
-		$this->method_title     = 'Stripe Settings for Cards';		
+		$this->method_title     = 'Stripe Cards Settings';		
 		$this->init_form_fields();
 		$this->init_settings();
 		$this->title               	 = $this->get_option( 'stripe_title' );
@@ -106,13 +110,13 @@ if(class_exists('WC_Payment_Gateway'))
 	?>
 		<table>
 		    <tr>
-		    	<td><label class="" for="stripe_cardno"><?php echo __( 'Card No.', 'woocommerce') ?></label></td>
-			<td><input type="text" name="stripe_cardno" class="input-text" /></td>
+		    	<td><label for="stripe_cardno"><?php echo __( 'Card No.', 'woocommerce') ?></label></td>
+			<td><input type="text" name="stripe_cardno" class="input-text" placeholder="Credit Card No" /></td>
 		    </tr>
 		    <tr>
 		    	<td><label class="" for="stripe_expiration_date"><?php echo __( 'Expiration date', 'woocommerce') ?>.</label></td>
 			<td>
-			   <select name="stripe_expmonth" id="expmonth">
+			   <select name="stripe_expmonth" style="height: 33px;">
 			      <option value=""><?php _e( 'Month', 'woocommerce' ) ?></option>
 			      <option value='01'>01</option>
 			      <option value='02'>02</option>
@@ -127,7 +131,7 @@ if(class_exists('WC_Payment_Gateway'))
 			      <option value='11'>11</option>
 			      <option value='12'>12</option>  
 			    </select>
-			    <select name="stripe_expyear" id="expyear">
+			    <select name="stripe_expyear" style="height: 33px;">
 			      <option value=""><?php _e( 'Year', 'woocommerce' ) ?></option><?php
 			      $years = array();
 			      for ( $i = date( 'y' ); $i <= date( 'y' ) + 15; $i ++ ) {
@@ -137,8 +141,8 @@ if(class_exists('WC_Payment_Gateway'))
 			</td>
 		    </tr>
 		    <tr>
-		    	<td><label class="" for="stripe_cardcvv"><?php echo __( 'Card CVC', 'woocommerce') ?></label></td>
-			<td><input type="text" name="stripe_cardcvv" class="input-text" /></td>
+		    	<td><label for="stripe_cardcvv"><?php echo __( 'Card CVC', 'woocommerce') ?></label></td>
+			<td><input type="text" name="stripe_cardcvv" class="input-text" placeholder="CVC" /></td>
 		    </tr>
 		</table>
 	        <?php  
@@ -152,7 +156,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$grand_total 	= $wc_order->order_total;
 		$amount 	     = $grand_total * 100 ;
 
-		include(plugin_dir_path( __FILE__ )."lib/Stripe.php");
+		
 	
 		if(STRIPE_SANDBOX == 'yes')
 		{ Stripe::setApiKey($this->stripe_testsecretkey);  }
@@ -164,10 +168,10 @@ if(class_exists('WC_Payment_Gateway'))
 
 		$token_id = Stripe_Token::create(array(
 			 				"card" => array( 
-			 						"number" 	     => $_POST['stripe_cardno'], 
-									"exp_month" 	=> $_POST['stripe_expmonth'], 
-									"exp_year" 	=> $_POST['stripe_expyear'], 
-									"cvc" 		=> $_POST['stripe_cardcvv'] 
+			 						"number" 	     => sanitize_text_field($_POST['stripe_cardno']), 
+									"exp_month" 	=> sanitize_text_field($_POST['stripe_expmonth']), 
+									"exp_year" 	=> sanitize_text_field($_POST['stripe_expyear']), 
+									"cvc" 		=> sanitize_text_field($_POST['stripe_cardcvv']) 
 									) 
 				            	      )
 						);
@@ -191,8 +195,9 @@ if(class_exists('WC_Payment_Gateway'))
 		{	
 			
 			$body         = $e->getJsonBody(); 
-			$error = $body['error']['message'];
+			$error        = $body['error']['message'];
  			echo json_encode(array('message' => $error ));
+ 			$woocommerce->add_error( __( 'Sorry, Error.'.$error, 'woocommerce' ) );
 			
 		}
 
@@ -202,7 +207,7 @@ if(class_exists('WC_Payment_Gateway'))
 		  {
 			$epoch     = $charge->created;
 			$dt        = new DateTime("@$epoch"); 
-			$timestamp =  $dt->format('Y-m-d H:i:s e');
+			$timestamp = $dt->format('Y-m-d H:i:s e');
 			$chargeid  = $charge->id ; 
 
 		  	$wc_order->add_order_note( __( 'Stripe payment completed at. '.$timestamp.' with Charge ID = '.$chargeid , 'woocommerce' ) );
