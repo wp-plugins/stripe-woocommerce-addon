@@ -34,7 +34,7 @@ This plugin uses Stripe API version  2015-01-26 to create tokens and charge cred
 
 3) Plugin will appear in settings of woocommerce
 
-4) You can set the addon settings from wocommmerce->settings->Checkout->Stripe Settings for Cards
+4) You can set the addon settings from wocommmerce->settings->Checkout->Stripe Cards Settings 
 
 5) You can check for Testing Card No Here https://stripe.com/docs/testing
 
