@@ -1,7 +1,7 @@
 ==== Stripe WooCommerce Addon ====
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
-Plugin URI: htt ps://wordpress.org/plugins/stripe-woocommerce-addon/
+Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
 Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
@@ -16,8 +16,22 @@ License: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin acts as an addon for woocommerce to implement a payment gateway for stripe for accepting credit cards payments
+This plugin acts as an addon for woocommerce to add a payment method for WooCommerce to accept credit cards payments by merchants
 This plugin uses Stripe API version  2015-01-26 to create tokens and charge credit cards
+
+= Features =
+1. Very Simple Clean Code plugin to add a Stripe payment method to woocommerce
+2. No technical skills needed.
+3. Prerequisite visualized on screenshots.
+4. Adds Charde Id and Charge time to Order Note.
+5. Can be customized easily.
+6. Bundles with Official Stripe® API Libraries.
+7. Can work with test/sandbox mode of Stripe accounts for testing purpose.
+8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
+9. It does not needs SSL.
+10. Single checkbox to put it in live/test mode.
+
+
 
 == Screenshots ==
 
