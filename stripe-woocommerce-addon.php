@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Stripe WooCommerce Addon
  * Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
- * Description: This plugin adds an feature of payment option in wocommerce for customers to pay with their Credit Cards Via Stripe.
+ * Description: This plugin adds a payment option in wocommerce for customers to pay with their Credit Cards Via Stripe.
  * Version: 1.0.0
  * Author: Syed Nazrul Hassan
  * Author URI: https://nazrulhassan.wordpress.com/
