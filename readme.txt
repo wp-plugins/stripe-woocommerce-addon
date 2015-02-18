@@ -16,7 +16,7 @@ License: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin acts as an addon for woocommerce to add a payment method for WooCommerce for accepting **Credit Cards Payments** by merchants via **Stripe** 
+This plugin acts as an addon for woocommerce to add a payment method for WooCommerce for accepting **Credit Cards Payments** by merchants via **Stripe** directly on checkout page.
 This plugin uses Stripe API version  **2015-01-26** to create tokens and charge credit cards
 
 = Features =
@@ -30,7 +30,7 @@ This plugin uses Stripe API version  **2015-01-26** to create tokens and charge 
 8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
 9. It does not needs SSL.
 10. Single checkbox to put it in live/test mode.
-
+11. This plugin currently supports USD.
 
 
 == Screenshots ==
