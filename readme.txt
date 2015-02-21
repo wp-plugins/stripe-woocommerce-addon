@@ -1,4 +1,4 @@
-==== Stripe WooCommerce Addon ====
+==== Stripe Payment Gateway WooCommerce Addon ====
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
