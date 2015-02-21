@@ -7,7 +7,7 @@ Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 3.8 
-Tested up to: 4.1.1 & Woocommerce 2.3.5
+Tested up to: 4.1.1 & WooCommerce 2.3.5
 Stable tag: 1.0.1
 Version: 1.0
 License: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,7 @@ This plugin uses Stripe API version  **2015-01-26** to create tokens and charge 
 10. Single checkbox to put it in live/test mode.
 11. This plugin currently supports Multiple Currency Irrespective of store base currency See screenshot 2. also see https://support.stripe.com/questions/which-currencies-does-stripe-support
 12. This plugin **does not store Credit Card Details**.
+13. This plugin does not support refunds in woocommerce interface.
 
 
 == Screenshots ==
