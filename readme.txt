@@ -2,7 +2,7 @@
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway
+Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway for woocommerce
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
