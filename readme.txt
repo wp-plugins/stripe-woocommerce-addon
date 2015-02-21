@@ -33,7 +33,7 @@ This plugin uses Stripe API version  **2015-01-26** to create tokens and charge 
 11. This plugin currently supports Multiple Currency Irrespective of store base currency See screenshot 2. also see https://support.stripe.com/questions/which-currencies-does-stripe-support
 12. This plugin **does not store Credit Card Details**.
 13. This plugin does not support refunds in woocommerce interface.
-
+14. This plugin internally works as Authorize & Capture.
 
 == Screenshots ==
 
