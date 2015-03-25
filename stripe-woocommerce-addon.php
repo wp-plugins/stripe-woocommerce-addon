@@ -206,8 +206,7 @@ if(class_exists('WC_Payment_Gateway'))
 			$body         = $e->getJsonBody(); 
 			$error        = $body['error']['message'];
  			echo json_encode(array('message' => $error ));
- 			$woocommerce->add_error( __( 'Sorry, Error.'.$error, 'woocommerce' ) );
-			
+ 			wc_add_notice($error, $notice_type = 'error' );
 		}
 
 		if($token_id->id !='')
@@ -229,7 +228,8 @@ if(class_exists('WC_Payment_Gateway'))
 		  else
 		  {
 			$wc_order->add_order_note( __( 'Stripe payment failed.'.$error, 'woocommerce' ) );
-			$woocommerce->add_error( __( 'Sorry, Error.'.$error, 'woocommerce' ) );
+			wc_add_notice($error, $notice_type = 'error' );
+			
 		  }
 		  
 		}
