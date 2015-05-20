@@ -7,7 +7,7 @@ Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 4.0 
-Tested up to: 4.2.1 & WooCommerce 2.3.8
+Tested up to: 4.2.2 & WooCommerce 2.3.9
 Stable tag: 1.0
 Version: 1.0
 License: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 10. Single checkbox to put it in live/test mode.
 11. This plugin currently supports Multiple Currency Irrespective of store base currency See screenshot 2. also see https://support.stripe.com/questions/which-currencies-does-stripe-support
 12. This plugin **does not store Credit Card Details**.
-13. This plugin does not support refunds in woocommerce interface.
+13. This plugin Support refunds in woocommerce interface.
 14. This plugin internally works as Authorize & Capture.
 
 == Screenshots ==
@@ -41,10 +41,12 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 02. Screenshot 2 - Admin Settings of Addon
 03. Screenshot 3 - Checkout Page Form
 04. Screeensho 4 - This plugin passes Order Id in stripe meta and billing email in description.
+05. Screenshot 5 - This shows a partial refunded amount of order with charge & refund ID with charge id passed to order.
+06. Screenshot 6 - This shows how refund appears on stripe dashboard
 
 == Installation ==
 
-1. Upload 'stripe-woo-commerce' folder to the '/wp-content/plugins/' directory
+1. Upload 'stripe-woocommerce-addon' folder to the '/wp-content/plugins/' directory
 2. Activate 'Stripe Woocommerce Addon' from wp plugin lists in admin area
 3. Plugin will appear in settings of woocommerce
 4. You can set the addon settings from 
@@ -61,7 +63,7 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 5. This plugin does nor requires SSL.
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
-8. This plugin requires CURL installed with AsynchDNS 	Yes 
+8. This plugin requires CURL 
 == Changelog ==
 This is first version no known errors found
 

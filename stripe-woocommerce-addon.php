@@ -9,6 +9,7 @@
  * License: GPL2
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function stripe_init()
 {
 
@@ -37,6 +38,9 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->method_title     = 'Stripe Cards Settings';		
 		$this->init_form_fields();
 		$this->init_settings();
+		
+		$this->supports                  = array(  'products',  'refunds');
+		
 		$this->title               	   = $this->get_option( 'stripe_title' );
 		$this->stripe_testsecretkey      = $this->get_option( 'stripe_testsecretkey' );
 		$this->stripe_livesecretkey      = $this->get_option( 'stripe_livesecretkey' );
@@ -218,8 +222,11 @@ if(class_exists('WC_Payment_Gateway'))
 			$timestamp = $dt->format('Y-m-d H:i:s e');
 			$chargeid  = $charge->id ; 
 
-		  	$wc_order->add_order_note( __( 'Stripe payment completed at. '.$timestamp.' with Charge ID = '.$chargeid , 'woocommerce' ) );
-			$wc_order->payment_complete();
+		  	$wc_order->add_order_note( __( 'Stripe payment completed at. '.$timestamp.' with Charge ID = '.$chargeid , 'woocommerce' ) );			
+		  	global $woocommerce;
+		  	$woocommerce->cart->empty_cart();
+			
+			$wc_order->payment_complete($chargeid);
 			return array (
 			  'result'   => 'success',
 			  'redirect' => $this->get_return_url( $wc_order ),
@@ -236,6 +243,56 @@ if(class_exists('WC_Payment_Gateway'))
 
 
 		} // end of function process_payment()
+
+		
+		public function process_refund( $order_id, $amount = null ) {
+		
+		
+		if($amount > 0 )
+		{
+			
+			if(STRIPE_SANDBOX == 'yes')
+			{ Stripe::setApiKey($this->stripe_testsecretkey);  }
+			else
+			{ Stripe::setApiKey($this->stripe_livesecretkey);   }
+		
+			$CHARGE_ID 	= get_post_meta( $order_id , '_transaction_id', true );
+			$charge 		= Stripe_Charge::retrieve($CHARGE_ID);
+			$refund 		= $charge->refunds->create(
+												array(
+												'amount' 				=> $amount*100,
+												'metadata'			=> array('order_id' => $order_id)
+												)
+										      );
+
+			if($refund)	
+			{
+
+			$repoch      = $refund->created;
+			$rdt         = new DateTime("@$repoch"); 
+			$rtimestamp  = $rdt->format('Y-m-d H:i:s e');
+			$refundid    = $refund->id; 
+			$wc_order    = new WC_Order( $order_id );
+			$wc_order->add_order_note( __( 'Stripe Refund completed at. '.$rtimestamp.' with Refund ID = '.$refundid , 'woocommerce' ) );				
+			return true;
+			}
+			else
+			{
+			return false;
+			}
+		
+		
+		}
+		else
+		{
+			return false;
+		}
+			
+		
+		
+		}// end of  process_refund()
+
+
 
 	}  // end of class WC_Stripe_Gateway
 
