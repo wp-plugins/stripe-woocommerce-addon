@@ -63,7 +63,9 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 5. This plugin does nor requires SSL.
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
-8. This plugin requires CURL 
+8. This plugin requires CURL
+9. This plugin does not support Pre Order or Subscriptions 
+
 == Changelog ==
 This is first version no known errors found
 
