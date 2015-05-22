@@ -46,8 +46,11 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->stripe_livesecretkey      = $this->get_option( 'stripe_livesecretkey' );
 		$this->stripe_storecurrency      = $this->get_option( 'stripe_storecurrency' );
 		$this->stripe_sandbox            = $this->get_option( 'stripe_sandbox' ); 
+		$this->stripe_authorize_only     = $this->get_option( 'stripe_authorize_only' );
 
-		define("STRIPE_SANDBOX", ($this->stripe_sandbox=='yes'? true : false));
+		define("STRIPE_SANDBOX"           , ($this->stripe_sandbox        =='yes'? true : false));
+		define("STRIPE_TRANSACTION_MODE"  , ($this->stripe_authorize_only =='yes'? false : true));
+		
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
@@ -105,12 +108,22 @@ if(class_exists('WC_Payment_Gateway'))
                   'description'  => "Select the currency in which you like to receive payment the currency that has (*) is unsupported on  American Express Cards" ),
 		
 		'stripe_sandbox' => array(
-		  'title'       => __( 'stripe sandbox', 'woocommerce' ),
+		  'title'       => __( 'Stripe Sandbox', 'woocommerce' ),
 		  'type'        => 'checkbox',
-		  'label'       => __( 'Enable stripe sandbox', 'woocommerce' ),
+		  'label'       => __( 'Enable stripe sandbox (Live Mode if Unchecked)', 'woocommerce' ),
+		  'description' => __( 'If checked its in sanbox mode and if unchecked its in live mode', 'woocommerce' ),
+		  'desc_tip'      => true,
 		  'default'     => 'no',
-		  'description' => __( 'If checked its in sanbox mode and if unchecked its in live mode', 'woocommerce' )
-		)
+		),
+		
+		'stripe_authorize_only' => array(
+		'title'       => __( 'Authorize Only', 'woocommerce' ),
+		'type'        => 'checkbox',
+		'label'       => __( 'Enable Authorize Only Mode (Authorize & Capture If Unchecked)', 'woocommerce' ),
+		'description' => __( 'If checked will only authorize the credit card only upon checkout.', 'woocommerce' ),
+		'desc_tip'      => true,
+		'default'     => 'no',
+		),
 		
 	  );
   		}
@@ -180,28 +193,38 @@ if(class_exists('WC_Payment_Gateway'))
 		{
 
 		// create token for customer/buyer credit card
-
 		$token_id = Stripe_Token::create(array(
-			 				"card" => array( 
-			 						"number" 	     => sanitize_text_field($_POST['stripe_cardno']), 
-									"exp_month" 	=> sanitize_text_field($_POST['stripe_expmonth']), 
-									"exp_year" 	=> sanitize_text_field($_POST['stripe_expyear']), 
-									"cvc" 		=> sanitize_text_field($_POST['stripe_cardcvv']) 
-									) 
+ 				"card" => array( 
+ 						'number' 	     	=> sanitize_text_field($_POST['stripe_cardno']), 
+ 						'cvc' 			=> sanitize_text_field($_POST['stripe_cardcvv']),
+						'exp_month' 		=> sanitize_text_field($_POST['stripe_expmonth']), 
+						'exp_year' 		=> sanitize_text_field($_POST['stripe_expyear']), 
+						
+						
+						'name'  			=> $wc_order->billing_first_name.'-'.$wc_order->billing_last_name,
+						'address_line1'	=> $wc_order->billing_address_1 ,
+						'address_line2'	=> $wc_order->billing_address_2,
+						'address_city'		=> $wc_order->billing_city,
+						'address_state'	=> $wc_order->billing_state,
+						'address_zip'		=> $wc_order->billing_postcode,
+						'address_country'	=> $wc_order->billing_country
+						) 
 				            	      )
 						);
-
-		// charge customer/buyer credit card based on card's unique token 		
 		
-
 		$charge = Stripe_Charge::create(array( 
-							"amount" 	     => $amount, 
-							"currency" 	=> $this->stripe_storecurrency, 
-							"card"		=> $token_id->id, 
-							"metadata" 	=> array("order_id" => $order_id) ,
-							"description"  => $wc_order->billing_email
-						     )
-						);
+				'amount' 	     		=> $amount, 
+				'currency' 			=> $this->stripe_storecurrency, 
+				'card'				=> $token_id->id, 
+				'capture'				=> STRIPE_TRANSACTION_MODE,
+				'statement_descriptor'   => 'Order #'.$order_id,
+				'metadata' 			=> array("order_id" => 'Order #'.$order_id) ,
+				'description'  		=> $wc_order->billing_email
+				
+			     )
+			);
+											
+						
 		}
 		
 		catch (Exception $e) 
