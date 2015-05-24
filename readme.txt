@@ -85,7 +85,7 @@ Also See
 	4. Added support to accept card types
 	5. Added support for authorize or authorize & capture
 	6. Added performance improvement and bugfixes
-	7. Added support for refunds from WooCommerce Interface vis Stripe API.
+	7. Added support for refunds from WooCommerce Interface via Stripe API.
 	
 2015.02.12
 
