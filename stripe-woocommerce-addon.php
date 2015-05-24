@@ -314,14 +314,27 @@ if(class_exists('WC_Payment_Gateway'))
 				'currency' 			=> $this->stripe_storecurrency, 
 				'card'				=> $token_id->id, 
 				'capture'				=> STRIPE_TRANSACTION_MODE,
-				'statement_descriptor'   => 'Order #'.$order_id,
+				'statement_descriptor'   => 'Order#'.$wc_order->get_order_number(),
 				'metadata' 			=> array(
 											'Order #' 	  => $order_id,
-											'Tax'         	  => $wc_order->get_total_tax(),
+											'Total Tax'      => $wc_order->get_total_tax(),
 											'Total Shipping' => $wc_order->get_total_shipping(),
-											'Client IP'	  => $this->get_client_ip()
+											'Customer IP'	  => $this->get_client_ip(),
+											'WP customer #'  => $wc_order->user_id
 										   ) ,
-				'description'  		=> $wc_order->billing_email
+				'description'  		=> get_bloginfo('blogname').' Order #'.$wc_order->get_order_number(),
+				'shipping' 		     => array(
+											'address' => array(
+												'line1'		=> $wc_order->shipping_address_1,
+												'line2'		=> $wc_order->shipping_address_2,
+												'city'		=> $wc_order->shipping_city,
+												'state'		=> $wc_order->shipping_state,
+												'country'		=> $wc_order->shipping_country,
+												'postal_code'	=> $wc_order->shipping_postcode		
+												),
+											'name' => $wc_order->shipping_first_name.' '.$wc_order->shipping_last_name,
+											'phone'=> $wc_order->billing_phone 
+										)
 				
 			     )
 			);
