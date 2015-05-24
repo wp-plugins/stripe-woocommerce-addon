@@ -78,16 +78,18 @@ Also See
 == Changelog ==
 
 2015.05.25 - version 1.0.1
-	* Added Sending Shipping Address to stripe
-	* Added Sending of Name , Zipcode to Stripe 
-	* Added support of more metadata( WP user_id,Customer IP,Tax,Shipping etc)
-	* Added support to accept card types
-	* Added support for authorize or authorize & capture
-	* Added performance improvement and bugfixes
-	* Added support for refunds from WooCommerce Interface vis Stripe API.
+
+	1. Added Sending Shipping Address to stripe
+	2. Added Sending of Name , Zipcode to Stripe 
+	3. Added support of more metadata( WP user_id,Customer IP,Tax,Shipping etc)
+	4. Added support to accept card types
+	5. Added support for authorize or authorize & capture
+	6. Added performance improvement and bugfixes
+	7. Added support for refunds from WooCommerce Interface vis Stripe API.
 	
 2015.02.12
-	* First Release
+
+	1. First Release
 	
 == Upgrade Notice == 
 This is first version no known notices yet
