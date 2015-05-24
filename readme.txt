@@ -77,7 +77,7 @@ Also See
 
 == Changelog ==
 
-2015.05.25 - version 1.0.1
+2015.05.25 - Version 1.0.1
 
 	1. Added Sending Shipping Address to stripe
 	2. Added Sending of Name , Zipcode to Stripe 
@@ -87,7 +87,7 @@ Also See
 	6. Added performance improvement and bugfixes
 	7. Added support for refunds from WooCommerce Interface via Stripe API.
 	
-2015.02.12
+2015.02.12 - Version 1.0.0
 
 	1. First Release
 	
