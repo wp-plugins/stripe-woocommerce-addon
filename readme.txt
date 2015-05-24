@@ -32,8 +32,8 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 10. Single checkbox to put it in live/test mode.
 11. Single checkbox to put it in Authorize or Authorize & Capture.
 12. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
-
 Also See
+
 	1. https://support.stripe.com/questions/which-currencies-does-stripe-support
 	
 13. This plugin **does not store Credit Card Details**.
