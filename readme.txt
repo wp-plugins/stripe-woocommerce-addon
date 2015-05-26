@@ -28,7 +28,7 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 6. Bundles with Official Stripe® API Libraries.
 7. Can work with test/sandbox mode of Stripe accounts for testing purpose.
 8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
-9. This plugin requires SSL prescribed <a href="https://stripe.com/help/ssl">Here</a> technically you can accept payment withou SSL on merchant site but PCI Compliance & Offical Stripe review recommends to use SSL 
+9. This plugin requires SSL on merchant site  prescribed <a href="https://stripe.com/help/ssl">Here</a> based on PCI Compliance & Offical Stripe review to Use SSL
 10. Single checkbox to put it in live/test mode.
 11. Single checkbox to put it in Authorize or Authorize & Capture.
 12. This plugin Support to accept card types.
@@ -69,13 +69,13 @@ Also See
 2. You need to follow The Screeenshot 1 to obtain API keys from Stripe https://dashboard.stripe.com/
 3. This plugin works on test & live api keys.
 4. This plugin readily works on local.
-5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl" target="_blank" >Here</a>
+5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a>
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
 8. This plugin requires CURL
 9. This plugin does not support Pre Order or Subscriptions 
-10. This plugin will technically work with sites that dont have SSL but Stripe requires to use SSL always
-
+10. This plugin will technically work or might work with sites that dont have SSL but Stripe & PCI compliance requires to use SSL always
+11. If you do not use SSL, your Stripe account can be disabled, you can be fined, and you will be responsible for any potentially stolen credit cards
 == Changelog ==
 
 2015.05.25 - Version 1.0.1
