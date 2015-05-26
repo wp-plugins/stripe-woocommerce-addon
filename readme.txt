@@ -74,7 +74,7 @@ Also See
 7. This plugin comes packed with Official Stripe Libraries
 8. This plugin requires CURL
 9. This plugin does not support Pre Order or Subscriptions 
-10. This plugin will technically work with sites that dont have SSL but Stripe recommends to use SSL always
+10. This plugin will technically work with sites that dont have SSL but Stripe requires to use SSL always
 
 == Changelog ==
 
