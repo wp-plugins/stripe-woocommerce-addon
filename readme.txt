@@ -66,7 +66,7 @@ Also See
 == Frequently Asked Questions ==
 
 1. You need to have woocoommerce plugin installed to make this plugin work
-2. You need to follow The Screeenshot 1 to obtain API keys from Stripe https://dashboard.stripe.com/
+2. You need to follow The Screeenshot 1 to obtain API keys from Stripe <a href="https://dashboard.stripe.com/dashboard">Dashboard</a>
 3. This plugin works on test & live api keys.
 4. This plugin readily works on local.
 5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a>
