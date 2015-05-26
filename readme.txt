@@ -76,6 +76,7 @@ Also See
 9. This plugin does not support Pre Order or Subscriptions 
 10. This plugin will technically work or might work with sites that dont have SSL but Stripe & PCI compliance requires to use SSL always
 11. If you do not use SSL, your Stripe account can be disabled, you can be fined, and you will be responsible for any potentially stolen credit cards
+
 == Changelog ==
 
 2015.05.25 - Version 1.0.1
