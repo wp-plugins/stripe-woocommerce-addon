@@ -75,7 +75,7 @@ Also See
 8. This plugin requires CURL
 9. This plugin does not support Pre Order or Subscriptions 
 10. Stripe & PCI compliance requires to use SSL always
-11. If you do not use SSL, your Stripe account can be disabled, you can be fined, and you will be responsible for any potentially stolen credit cards
+
 
 == Changelog ==
 
