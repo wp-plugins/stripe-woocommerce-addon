@@ -28,7 +28,7 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 6. Bundles with Official Stripe® API Libraries.
 7. Can work with test/sandbox mode of Stripe accounts for testing purpose.
 8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
-9. It does not needs SSL.
+9. This plugin requires SSL prescribed <a href="https://stripe.com/help/ssl">Here</a> technically you can accept payment withou SSL on merchant site but PCI Compliance & Offical Stripe review recommends to use SSL 
 10. Single checkbox to put it in live/test mode.
 11. Single checkbox to put it in Authorize or Authorize & Capture.
 12. This plugin Support to accept card types.
@@ -60,7 +60,7 @@ Also See
 3. Plugin will appear in settings of woocommerce
 4. You can set the addon settings from 
    wocommmerce -> settings -> Checkout -> Stripe Cards Settings
-5. You can check for Testing Card No Here https://stripe.com/docs/testing
+5. You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
 6. Integrated Stripe Libraries
 
 == Frequently Asked Questions ==
@@ -69,11 +69,12 @@ Also See
 2. You need to follow The Screeenshot 1 to obtain API keys from Stripe https://dashboard.stripe.com/
 3. This plugin works on test & live api keys.
 4. This plugin readily works on local.
-5. This plugin does nor requires SSL.
+5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl" target="_blank" >Here</a>
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
 8. This plugin requires CURL
 9. This plugin does not support Pre Order or Subscriptions 
+10. This plugin will technically work with sites that dont have SSL but Stripe recommends to use SSL always
 
 == Changelog ==
 
