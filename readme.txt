@@ -43,7 +43,6 @@ Also See
 	
 
 
-
 == Screenshots ==
 
 01. Screenshot 1 - Api Key Location 
