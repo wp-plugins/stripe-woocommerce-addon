@@ -298,7 +298,7 @@ if(class_exists('WC_Payment_Gateway'))
 						'exp_year' 		=> sanitize_text_field($_POST['stripe_expyear']), 
 						
 						
-						'name'  			=> $wc_order->billing_first_name.'-'.$wc_order->billing_last_name,
+						'name'  			=> $wc_order->billing_first_name.' '.$wc_order->billing_last_name,
 						'address_line1'	=> $wc_order->billing_address_1 ,
 						'address_line2'	=> $wc_order->billing_address_2,
 						'address_city'		=> $wc_order->billing_city,
