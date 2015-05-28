@@ -320,7 +320,8 @@ if(class_exists('WC_Payment_Gateway'))
 											'Total Tax'      => $wc_order->get_total_tax(),
 											'Total Shipping' => $wc_order->get_total_shipping(),
 											'Customer IP'	  => $this->get_client_ip(),
-											'WP customer #'  => $wc_order->user_id
+											'WP customer #'  => $wc_order->user_id,
+											'Billing Email'  => $wc_order->billing_email,
 										   ) ,
 				'description'  		=> get_bloginfo('blogname').' Order #'.$wc_order->get_order_number(),
 				'shipping' 		     => array(
