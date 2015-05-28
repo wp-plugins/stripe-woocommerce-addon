@@ -25,7 +25,7 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 3. Prerequisite visualized on screenshots.
 4. Adds Charde Id and Charge time to Order Note.
 5. Can be customized easily.
-6. This plugin uses Bundles with <a href="https://github.com/stripe/stripe-php">Official Stripe® API Libraries</a> Version 1.18.0.
+6. This plugin uses Bundles with <a href="https://github.com/stripe/stripe-php">Official Stripe® API Libraries</a> Version 1.18.0 to support PHP 5.2 Compatibility.
 7. Can work with test/sandbox mode of Stripe accounts for testing purpose.
 8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
 9. This plugin requires SSL on merchant site as described <a href="https://stripe.com/help/ssl">here</a>.
