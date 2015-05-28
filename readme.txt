@@ -6,7 +6,7 @@ Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stri
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
-Requires at least: 4.0 
+Requires at least: 4.0  & WooCommerce 2.2+
 Tested up to: 4.2.2 & WooCommerce 2.3.9
 Stable tag: 1.0.1
 Version: 1.0.1
