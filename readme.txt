@@ -66,7 +66,7 @@ Also See
 2. You need to follow The Screeenshot 1 to obtain API keys from Stripe <a href="https://dashboard.stripe.com/dashboard">Dashboard</a>
 3. This plugin works on test & live api keys.
 4. This plugin readily works on local.
-5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a>
+5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a> but can work even without SSL.
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
 8. This plugin requires CURL
