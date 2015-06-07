@@ -2,12 +2,12 @@
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway for woocommerce,wordpress stripe wocommmerce
+Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway for woocommerce,wordpress stripe wocommmerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 4.0  & WooCommerce 2.2+
-Tested up to: 4.2.2 & WooCommerce 2.3.9
+Tested up to: 4.2.2 & WooCommerce 2.3.10
 Stable tag: 1.0.2
 Version: 1.0.2
 License: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,24 +24,25 @@ This plugin uses Stripe API version  **2015-04-07** to create tokens and charge 
 2. No technical skills needed.
 3. Prerequisite visualized on screenshots.
 4. Adds Charde Id and Charge time to Order Note.
-5. Can be customized easily.
-6. This plugin uses Bundles with <a href="https://github.com/stripe/stripe-php">Official Stripe® API Libraries</a> Version 1.18.0 to support PHP 5.2 Compatibility.
-7. Can work with test/sandbox mode of Stripe accounts for testing purpose.
-8. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
-9. This plugin requires SSL on merchant site as described <a href="https://stripe.com/help/ssl">here</a>.
-10. Single checkbox to put it in live/test mode.
-11. Single checkbox to put it in Authorize or Authorize & Capture.
-12. This plugin Support to accept card types.
-13. This plugin does not store **Credit Card Details**
-14. This plugin Support refunds **(Only in Cents)** in woocommerce interface. On full refund order state changes automatically to refunded(WooCommerce Feature).
-15. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically.
-16. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
+5. This plugin can be customized easily.
+6. This plugin bundles with <a href="https://github.com/stripe/stripe-php">Official Stripe® API Libraries</a> Version 1.18.0 to support PHP 5.2 Compatibility.
+7. This plugin Can work with Sandbox/Live mode of Stripe accounts Single checkbox to put it in live/test mode.
+8. This plugin does not store **Credit Card Details**
+9. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
+10. This plugin requires SSL on merchant site as described <a href="https://stripe.com/help/ssl">here</a>.
+11. This plugin suppports Authorize or Authorize and Capture with single checkbox to put it in Authorize or Authorize & Capture.
+12. This plugin suppports to accept the type of card you like.
+13. This plugin Support refunds **(Only in Cents)** in woocommerce interface
+14. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
 
 Also See
 
 	1. https://support.stripe.com/questions/which-currencies-does-stripe-support
 	
 
+=Video=
+
+https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 
 == Screenshots ==
 
@@ -68,17 +69,19 @@ Also See
 2. You need to follow The Screeenshot 1 to obtain API keys from Stripe <a href="https://dashboard.stripe.com/dashboard">Dashboard</a>
 3. This plugin works on test & live api keys.
 4. This plugin readily works on local.
-5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a>
+5. This plugin requires SSL as per <a href="https://stripe.com/help/ssl">Here</a> but can work even without SSL.
 6. This plugin does not store Card Details anywhere.
 7. This plugin comes packed with Official Stripe Libraries
 8. This plugin requires CURL
 9. This plugin does not support Pre Order or Subscriptions 
 10. Stripe & PCI compliance requires to use SSL always
-
+11. This plugin Support refunds **(Only in Cents)** in woocommerce interface. On full refund order state changes automatically to refunded(WooCommerce Feature).
+12. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically. 
+13.You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
 
 == Changelog ==
 
-2015.05.25 - Version 1.0.2
+2015.05.29 - Version 1.0.2
 
 	1. Added sending billing email in meta for fraud tracking
 	2. Fixed Warnings & Notices when plugin run in WP debug mode set to true.
@@ -100,4 +103,4 @@ Also See
 	1. First Release
 	
 == Upgrade Notice == 
-This is first version no known notices yet
+There is no upgrade notice yet
