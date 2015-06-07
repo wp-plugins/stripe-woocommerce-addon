@@ -2,7 +2,7 @@
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway for woocommerce,wordpress stripe wocommmerce
+Tags: woocommerce, stripe, woocommerce addon stripe, stripe for woocommerce,stripe for wordpress,stripe payment method,stripe payment in wordpress,stripe payment gateway for woocommerce,wordpress stripe wocommmerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
@@ -40,6 +40,9 @@ Also See
 	1. https://support.stripe.com/questions/which-currencies-does-stripe-support
 	
 
+=Video=
+
+https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 
 == Screenshots ==
 
