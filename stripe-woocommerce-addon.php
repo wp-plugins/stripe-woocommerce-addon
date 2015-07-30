@@ -442,7 +442,7 @@ add_action( 'plugins_loaded', 'stripe_init' );
 
 function stripe_woocommerce_addon_activate() {
 
-	if(function_exists('curl_exec'))
+	if(!function_exists('curl_exec'))
 	{
 		 wp_die( '<pre>This plugin requires PHP CURL library installled in order to be activated </pre>' );
 	}
