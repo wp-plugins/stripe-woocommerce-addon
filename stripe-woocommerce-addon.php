@@ -235,7 +235,7 @@ if(class_exists('WC_Payment_Gateway'))
 		    <tr>
 		    	<td><label class="" for="stripe_expiration_date"><?php echo __( 'Expiration date', 'woocommerce') ?>.</label></td>
 			<td>
-			   <select name="stripe_expmonth" style="height: 33px;">
+			   <select name="stripe_expmonth">
 			      <option value=""><?php _e( 'Month', 'woocommerce' ) ?></option>
 			      <option value='01'>01</option>
 			      <option value='02'>02</option>
@@ -250,7 +250,7 @@ if(class_exists('WC_Payment_Gateway'))
 			      <option value='11'>11</option>
 			      <option value='12'>12</option>  
 			    </select>
-			    <select name="stripe_expyear" style="height: 33px;">
+			    <select name="stripe_expyear">
 			      <option value=""><?php _e( 'Year', 'woocommerce' ) ?></option><?php
 			      $years = array();
 			      for ( $i = date( 'y' ); $i <= date( 'y' ) + 15; $i ++ ) {
@@ -325,6 +325,7 @@ if(class_exists('WC_Payment_Gateway'))
 											'WP customer #'  => $wc_order->user_id,
 											'Billing Email'  => $wc_order->billing_email,
 										   ) ,
+				'receipt_email'          => $wc_order->billing_email,
 				'description'  		=> get_bloginfo('blogname').' Order #'.$wc_order->get_order_number(),
 				'shipping' 		     => array(
 											'address' => array(
@@ -437,3 +438,13 @@ if(class_exists('WC_Payment_Gateway'))
 }
 
 add_action( 'plugins_loaded', 'stripe_init' );
+
+
+function stripe_woocommerce_addon_activate() {
+
+	if(function_exists('curl_exec'))
+	{
+		 wp_die( '<pre>This plugin requires PHP CURL library installled in order to be activated </pre>' );
+	}
+}
+register_activation_hook( __FILE__, 'stripe_woocommerce_addon_activate' );
