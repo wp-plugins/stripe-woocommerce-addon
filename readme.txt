@@ -85,7 +85,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 	1. Added check for CURL to install the plugin.
 	2. Fixed "SyntaxError: JSON.parse: unexpected non-whitespace character after JSON data at line 1 column 52 of the JSON data" in woocommerce 2.4.
 	3. Added receipt_email in charge creation for fraud tracking.
-	4. Fixed hard coded stryles in year and month dropdown.
+	4. Fixed hard coded styles in year and month dropdown.
 
 2015.05.29 - Version 1.0.2
 
