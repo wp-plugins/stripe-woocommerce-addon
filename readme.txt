@@ -77,7 +77,10 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 10. Stripe & PCI compliance requires to use SSL always
 11. This plugin Support refunds **(Only in Cents)** in woocommerce interface. On full refund order state changes automatically to refunded(WooCommerce Feature).
 12. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically. 
-13.You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
+13. You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
+14. To pass public description you can comment out 'statement_descriptor'  in charge creation.
+15. To prevent stripe receipt on billing email comment out 'receipt_email' from charge creation.
+
 
 == Changelog ==
 2015.07.13 - Version 1.0.3
