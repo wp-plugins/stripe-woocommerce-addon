@@ -495,20 +495,9 @@ if(class_exists('WC_Payment_Gateway'))
 		{
 			$CHARGE_ID 	= get_post_meta( $order_id , '_transaction_id', true );
 			$charge 		= Stripe_Charge::retrieve($CHARGE_ID);
-
-			if(in_array($this->stripe_storecurrency ,$this->zerodecimalcurrency ))
-			{
-			$refamount 	     = number_format($grand_total,0,".","") ;
-			}
-			else
-			{
-			$refamount 	     = $amount * 100 ;
-			}
-
-
 			$refund 		= $charge->refunds->create(
 												array(
-												'amount' 		=> $refamount,
+												'amount' 		=> $amount * 100,
 												'metadata'	=> array('Order #' 		=> $order_id,
 																    'Refund reason' => $reason 
 																   ),
