@@ -7,7 +7,7 @@ Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 4.0  & WooCommerce 2.2+
-Tested up to: 4.2.4 & WooCommerce 2.4.3
+Tested up to: 4.3 & WooCommerce 2.4.4
 Stable tag: 1.0.3
 Version: 1.0.3
 License: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,7 +61,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 4. You can set the addon settings from 
    wocommmerce -> settings -> Checkout -> Stripe Cards Settings
 5. You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
-6. Integrated Stripe Libraries
+6. **Make sure you have 2 Decimal Places in Pricing Options (WooCommerce > Settings > General > Currency Options) with Trailing Zeros Checked else the charge created by card will be incorrect**
 
 == Frequently Asked Questions ==
 
@@ -89,6 +89,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 	2. Fixed "SyntaxError: JSON.parse: unexpected non-whitespace character after JSON data at line 1 column 52 of the JSON data" in woocommerce 2.4.
 	3. Added receipt_email in charge creation for fraud tracking.
 	4. Fixed hard coded styles in year and month dropdown.
+	5. Fixed charging with Zero decimal currencies details https://support.stripe.com/questions/which-zero-decimal-currencies-does-stripe-support.
 
 2015.05.29 - Version 1.0.2
 

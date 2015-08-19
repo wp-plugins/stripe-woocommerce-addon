@@ -39,18 +39,19 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->init_form_fields();
 		$this->init_settings();
 		
-		$this->supports                  = array(  'products',  'refunds');
+		$this->supports                 = array(  'products',  'refunds');
 		
-		$this->title               	   = $this->get_option( 'stripe_title' );
-		$this->stripe_testsecretkey      = $this->get_option( 'stripe_testsecretkey' );
-		$this->stripe_livesecretkey      = $this->get_option( 'stripe_livesecretkey' );
-		$this->stripe_storecurrency      = $this->get_option( 'stripe_storecurrency' );
-		$this->stripe_sandbox            = $this->get_option( 'stripe_sandbox' ); 
-		$this->stripe_authorize_only     = $this->get_option( 'stripe_authorize_only' );
-		$this->stripe_cardtypes          = $this->get_option( 'stripe_cardtypes');
+		$this->title               	   	= $this->get_option( 'stripe_title' );
+		$this->stripe_testsecretkey     = $this->get_option( 'stripe_testsecretkey' );
+		$this->stripe_livesecretkey     = $this->get_option( 'stripe_livesecretkey' );
+		$this->stripe_storecurrency     = $this->get_option( 'stripe_storecurrency' );
+		$this->stripe_sandbox           = $this->get_option( 'stripe_sandbox' ); 
+		$this->stripe_authorize_only    = $this->get_option( 'stripe_authorize_only' );
+		$this->stripe_cardtypes         = $this->get_option( 'stripe_cardtypes');
+		$this->zerodecimalcurrency      = array("BIF","CLP","DJF","GNF","JPY","KMF","KRW","MGA","PYG","RWF","VND","VUV","XAF","XOF","XPF");
 		
 		if(!defined("STRIPE_SANDBOX"))
-		{ define("STRIPE_SANDBOX"           , ($this->stripe_sandbox        =='yes'? true : false)); }
+		{ define("STRIPE_SANDBOX"       , ($this->stripe_sandbox        =='yes'? true : false)); }
 		
 		if(!defined("STRIPE_TRANSACTION_MODE"))
 		{ define("STRIPE_TRANSACTION_MODE"  , ($this->stripe_authorize_only =='yes'? false : true)); }
@@ -114,8 +115,8 @@ if(class_exists('WC_Payment_Gateway'))
 		  ),
 		
 		'stripe_storecurrency'    => array(
-                  'title'        => __('Fund Receiving Currency'),
-                  'type'     	   => 'select',
+               'title'        => __('Fund Receiving Currency'),
+               'type'     	   => 'select',
 			   'class'        => 'select',
 			   'css'          => 'width: 350px;',
 			   'desc_tip'     => __( 'Select the currency in which you like to receive payment the currency that has (*) is unsupported on  American Express Cards.This is independent of store base currency so please update your cart price accordingly.', 'woocommerce' ),
@@ -273,8 +274,16 @@ if(class_exists('WC_Payment_Gateway'))
 		global $woocommerce;
 		$wc_order 	= new WC_Order( $order_id );
 		$grand_total 	= $wc_order->order_total;
-		$amount 	     = $grand_total * 100 ;
-
+		
+		if(in_array($this->stripe_storecurrency ,$this->zerodecimalcurrency ))
+		{
+			$amount 	     = number_format($grand_total,0,".","") ;
+		}
+		else
+		{
+			$amount 	     = $grand_total * 100 ;
+		}
+		
 		$cardtype = $this->get_card_type(sanitize_text_field($_POST['stripe_cardno']));
 			
          		if(!in_array($cardtype ,$this->stripe_cardtypes ))
@@ -287,7 +296,6 @@ if(class_exists('WC_Payment_Gateway'))
 				die;
          		}
 
-	
 		try
 		{
 
@@ -295,16 +303,16 @@ if(class_exists('WC_Payment_Gateway'))
 		$token_id = Stripe_Token::create(array(
  				"card" => array( 
  						'number' 	     	=> sanitize_text_field($_POST['stripe_cardno']), 
- 						'cvc' 			=> sanitize_text_field($_POST['stripe_cardcvv']),
+ 						'cvc' 				=> sanitize_text_field($_POST['stripe_cardcvv']),
 						'exp_month' 		=> sanitize_text_field($_POST['stripe_expmonth']), 
-						'exp_year' 		=> sanitize_text_field($_POST['stripe_expyear']), 
+						'exp_year' 			=> sanitize_text_field($_POST['stripe_expyear']), 
 						
 						
 						'name'  			=> $wc_order->billing_first_name.' '.$wc_order->billing_last_name,
-						'address_line1'	=> $wc_order->billing_address_1 ,
-						'address_line2'	=> $wc_order->billing_address_2,
+						'address_line1'		=> $wc_order->billing_address_1 ,
+						'address_line2'		=> $wc_order->billing_address_2,
 						'address_city'		=> $wc_order->billing_city,
-						'address_state'	=> $wc_order->billing_state,
+						'address_state'		=> $wc_order->billing_state,
 						'address_zip'		=> $wc_order->billing_postcode,
 						'address_country'	=> $wc_order->billing_country
 						) 
@@ -313,26 +321,26 @@ if(class_exists('WC_Payment_Gateway'))
 		
 		$charge = Stripe_Charge::create(array( 
 				'amount' 	     		=> $amount, 
-				'currency' 			=> $this->stripe_storecurrency, 
-				'card'				=> $token_id->id, 
+				'currency' 				=> $this->stripe_storecurrency, 
+				'card'					=> $token_id->id, 
 				'capture'				=> STRIPE_TRANSACTION_MODE,
-				'statement_descriptor'   => 'Order#'.$wc_order->get_order_number(),
-				'metadata' 			=> array(
-											'Order #' 	  => $order_id,
-											'Total Tax'      => $wc_order->get_total_tax(),
-											'Total Shipping' => $wc_order->get_total_shipping(),
-											'Customer IP'	  => $this->get_client_ip(),
-											'WP customer #'  => $wc_order->user_id,
-											'Billing Email'  => $wc_order->billing_email,
+				'statement_descriptor'  => 'Order#'.$wc_order->get_order_number(),
+				'metadata' 				=> array(
+											'Order #' 	  		=> $order_id,
+											'Total Tax'      	=> $wc_order->get_total_tax(),
+											'Total Shipping' 	=> $wc_order->get_total_shipping(),
+											'Customer IP'	  	=> $this->get_client_ip(),
+											'WP customer #'  	=> $wc_order->user_id,
+											'Billing Email'  	=> $wc_order->billing_email,
 										   ) ,
-				'receipt_email'          => $wc_order->billing_email,
-				'description'  		=> get_bloginfo('blogname').' Order #'.$wc_order->get_order_number(),
-				'shipping' 		     => array(
+				'receipt_email'         => $wc_order->billing_email,
+				'description'  			=> get_bloginfo('blogname').' Order #'.$wc_order->get_order_number(),
+				'shipping' 		    	=> array(
 											'address' => array(
-												'line1'		=> $wc_order->shipping_address_1,
-												'line2'		=> $wc_order->shipping_address_2,
-												'city'		=> $wc_order->shipping_city,
-												'state'		=> $wc_order->shipping_state,
+												'line1'			=> $wc_order->shipping_address_1,
+												'line2'			=> $wc_order->shipping_address_2,
+												'city'			=> $wc_order->shipping_city,
+												'state'			=> $wc_order->shipping_state,
 												'country'		=> $wc_order->shipping_country,
 												'postal_code'	=> $wc_order->shipping_postcode		
 												),
@@ -356,7 +364,7 @@ if(class_exists('WC_Payment_Gateway'))
 				$wc_order->add_order_note(__( 'Stripe payment completed at-'.$timestamp.'-with Charge ID='.$chargeid ,'woocommerce'));			
 				$wc_order->payment_complete($chargeid);
 				WC()->cart->empty_cart();
-			
+				
 				return array (
 				  'result'   => 'success',
 				  'redirect' => $this->get_return_url( $wc_order ),
