@@ -36,7 +36,7 @@ This plugin uses Stripe API version  **2015-08-07** to create tokens and charge 
 14. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
 15. This plugin supports to enable alowed shipping method.
 16. This plugin supports dynamic cards logo based on cards allowed in Plugin settings
-17. This plugin readily works with <a href="http://www.cartspan.com/">CartSpan</a> for Credit Card payment reconciliation process for the merchant.
+17. This plug-in supports the **<a href="http://www.cartspan.com/">CartSpan</a> QuickBooks accounting integration** by providing detailed payment methods for account reconciliation. This functionality is not available with any other payment gateway or WooCommerce accounting integration.
 
 Also See
 
@@ -90,8 +90,8 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 
 	1. Added support to limit payment method based on shipping method allowed.
 	2. Added support to show Cards logo dynamically as  selected in admin
-	3. Added default credit card form introduced by WooCommerce and built on base from Stripe® Official  to remove the explicit translation needed by plugin in fact if woocommerce is translated accurately the frontend form would display Translated texts
-	4. Added support for CartSpan http://www.cartspan.com for Accounting Recouncilation.
+	3. Added default credit card form introduced by WooCommerce and built on base from Stripe® Official  to remove the explicit translation needed by plugin in fact if woocommerce is translated accurately the frontend form would display Translated texts.
+	4. Added support for CartSpan http://www.cartspan.com QuickBooks accounting integration for Accounting Recouncilation.
 
 2015.07.13 - Version 1.0.3
 
