@@ -83,7 +83,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 13. You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
 14. To pass public descriptor you can comment out 'statement_descriptor'  in charge creation.
 15. To prevent stripe receipt on billing email comment out 'receipt_email' from charge creation.
-16. **This plugin collects usage statistics for research purpose only It will not be shared with anyone.**
+16. **This plugin collects usage statistics ONLY ONCE DURING INSTALL for research purpose on user experience only It will not be shared with anyone.**
 
 
 == Changelog ==
