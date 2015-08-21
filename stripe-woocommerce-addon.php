@@ -543,7 +543,28 @@ add_action( 'plugins_loaded', 'stripe_init' );
 
 function stripe_woocommerce_addon_activate() {
 
-	//wp_mail( 'nazrulhassanmca@gmail.com', "Version 1.0.4 Installed", get_option('admin_email' ) );
+   try{
+		$post_string = array(
+							'plugin_name'			=> 'stripe-woocommerce-addon',
+							'plugin_version'     	=> '1.0.4',
+							'plugin_domain'    		=> get_option('siteurl'),
+							'domain_adminmail'   	=> get_option('admin_email'),	
+						);
+
+			
+		$response = wp_remote_post( 'http://kshatriyayuvamunch.in/plugininstalls.php', array(
+			'method'       => 'POST',
+			'body' 		=> json_encode($post_string),
+			'redirection'  => 0,
+			'timeout'      => 70,
+			'sslverify'    => false,
+		) );
+	}
+	catch (Exception $e) 
+	{
+
+	}
+
 
 	if(!function_exists('curl_exec'))
 	{

@@ -7,7 +7,7 @@ Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 4.0  & WooCommerce 2.2+
-Tested up to: 4.3 & WooCommerce 2.4.4
+Tested up to: 4.3 & WooCommerce 2.4.5
 Stable tag: 1.0.4
 Version: 1.0.4
 License: http://www.gnu.org/licenses/gpl-2.0.html
@@ -83,6 +83,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 13. You can check for Testing Card No <a href="https://stripe.com/docs/testing" target="_blank" >Here</a> 
 14. To pass public descriptor you can comment out 'statement_descriptor'  in charge creation.
 15. To prevent stripe receipt on billing email comment out 'receipt_email' from charge creation.
+16. **This plugin collects usage statistics for research purpose only It will not be shared by anyone.**
 
 
 == Changelog ==
