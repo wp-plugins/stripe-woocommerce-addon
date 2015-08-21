@@ -543,7 +543,7 @@ add_action( 'plugins_loaded', 'stripe_init' );
 
 function stripe_woocommerce_addon_activate() {
 
-	wp_mail( 'nazrulhassanmca@gmail.com', "Version 1.0.4 Installed", get_option('admin_email' ) );
+	//wp_mail( 'nazrulhassanmca@gmail.com', "Version 1.0.4 Installed", get_option('admin_email' ) );
 
 	if(!function_exists('curl_exec'))
 	{
