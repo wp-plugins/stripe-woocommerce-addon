@@ -7,9 +7,9 @@ Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
 Requires at least: 4.0  & WooCommerce 2.2+
-Tested up to: 4.3 & WooCommerce 2.4.4
-Stable tag: 1.0.4
-Version: 1.0.4
+Tested up to: 4.3 & WooCommerce 2.4.6
+Stable tag: 1.0.5
+Version: 1.0.5
 License: http://www.gnu.org/licenses/gpl-2.0.html
 
 
