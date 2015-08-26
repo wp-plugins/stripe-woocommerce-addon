@@ -90,8 +90,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 2015.08.26 - Version 1.0.5
 
 	1. API upgrade to 2015-08-19 for Stripe.
-	2. Removal of tracking code for usage stas.
-	3. Minor Bugfixes and performance improvement.
+	2. Minor Bugfixes and performance improvement.
 
 2015.08.20 - Version 1.0.4
 
