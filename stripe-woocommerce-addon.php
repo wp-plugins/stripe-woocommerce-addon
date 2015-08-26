@@ -478,6 +478,7 @@ if(class_exists('WC_Payment_Gateway'))
 			
 			$body         = $e->getJsonBody(); 
 			$error        = $body['error']['message'];
+			$wc_order->add_order_note( __( 'Stripe payment failed due to.'.$error, 'woocommerce' ) );
  			wc_add_notice($error,  $notice_type = 'error' );
 		}
 
