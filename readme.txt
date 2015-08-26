@@ -100,7 +100,7 @@ https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
 	3. Added default credit card form introduced by WooCommerce and built on base from Stripe® Official  to remove the explicit translation needed by plugin in fact if woocommerce is translated accurately the frontend form would display Translated texts.
 	4. Added support for CartSpan http://www.cartspan.com QuickBooks accounting integration for Accounting Recouncilation.
 
-2015.07.13 - Version 1.0.3
+2015.08.16 - Version 1.0.3
 
 	1. Added check for CURL to install the plugin.
 	2. Fixed "SyntaxError: JSON.parse: unexpected non-whitespace character after JSON data at line 1 column 52 of the JSON data" in woocommerce 2.4.
