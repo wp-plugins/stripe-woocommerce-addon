@@ -50,20 +50,15 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->stripe_cardtypes         = $this->get_option( 'stripe_cardtypes');
 		$this->stripe_enable_for_methods= $this->get_option( 'stripe_enable_for_methods', array() );
 		$this->stripe_meta_cartspan     = $this->get_option( 'stripe_meta_cartspan');
-
+		//$this->stripe_saved_cards       = $this->get_option( 'stripe_saved_cards') ;
 		$this->stripe_zerodecimalcurrency      = array("BIF","CLP","DJF","GNF","JPY","KMF","KRW","MGA","PYG","RWF","VND","VUV","XAF","XOF","XPF");
 		
-		if(!defined("STRIPE_SANDBOX"))
-		{ define("STRIPE_SANDBOX"       , ($this->stripe_sandbox        =='yes'? true : false)); }
-		
+			
 		if(!defined("STRIPE_TRANSACTION_MODE"))
 		{ define("STRIPE_TRANSACTION_MODE"  , ($this->stripe_authorize_only =='yes'? false : true)); }
-		
-		if(!defined("STRIPE_META_CARTSPAN"))
-		{ define("STRIPE_META_CARTSPAN"  , ($this->stripe_meta_cartspan =='yes'? true : false)); }
-		
 
-		if(STRIPE_SANDBOX == 'yes')
+
+		if('yes'  == $this->stripe_sandbox  )
 		{ Stripe::setApiKey($this->stripe_testsecretkey);  }
 		else
 		{ Stripe::setApiKey($this->stripe_livesecretkey);  }
@@ -73,7 +68,7 @@ if(class_exists('WC_Payment_Gateway'))
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		}
 		
-
+			//add_action( 'woocommerce_credit_card_form_end', array( $this, 'stripe_after_card_form' ) );
 		}
 
 		public function admin_options()
@@ -199,12 +194,15 @@ if(class_exists('WC_Payment_Gateway'))
 		'description' => __( 'If checked will store last4 and card brand in local db from charge object.', 'woocommerce' ),
 		'desc_tip'      => true,
 		'default'     => 'no',
-		),
+		)
+
 		
 	  );
   		}
   		
   		
+
+
   		/*Get Card Types*/
 		function get_card_type($number)
 		{
@@ -348,7 +346,7 @@ if(class_exists('WC_Payment_Gateway'))
 		{
 		global $error;
 		global $woocommerce;
-		$wc_order 	= new WC_Order( $order_id );
+		$wc_order 	    = wc_get_order( $order_id );
 		$grand_total 	= $wc_order->order_total;
 		
 		if(in_array($this->stripe_storecurrency ,$this->stripe_zerodecimalcurrency ))
@@ -435,7 +433,7 @@ if(class_exists('WC_Payment_Gateway'))
 				
 			     )
 			);
-											
+			//echo '<pre>' ; 	print_r($charge); var_dump($charge); die;
 			if($token_id->id !='')
 			{
 			  if ($charge->paid == true) 
@@ -449,7 +447,8 @@ if(class_exists('WC_Payment_Gateway'))
 				$wc_order->add_order_note(__( 'Stripe payment completed at-'.$timestamp.'-with Charge ID='.$chargeid ,'woocommerce'));			
 				$wc_order->payment_complete($chargeid);
 				WC()->cart->empty_cart();
-				if('yes' == STRIPE_META_CARTSPAN)
+
+				if('yes' == $this->stripe_meta_cartspan)
 				{
 				$stripe_metas_for_cartspan = array( 
 								'cc_type' 			=> $charge->source->brand,
@@ -457,7 +456,18 @@ if(class_exists('WC_Payment_Gateway'))
 								'cc_trans_id' 		=> $charge->id,
 							);
 				 add_post_meta( $order_id, '_stripe_metas_for_cartspan', $stripe_metas_for_cartspan);
-			   }
+			    }
+
+			    if(true == $charge->captured && true == $charge->paid)
+			    {
+			    	add_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_captured');
+			    }
+
+			    if(false == $charge->captured && true == $charge->paid)
+			    {
+			    	add_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_only');
+			    }
+
 				return array (
 				  'result'   => 'success',
 				  'redirect' => $this->get_return_url( $wc_order ),
@@ -539,8 +549,8 @@ if(class_exists('WC_Payment_Gateway'))
 
 }
 
+/*Activation hook*/
 add_action( 'plugins_loaded', 'stripe_init' );
-
 
 function stripe_woocommerce_addon_activate() {
 
@@ -550,3 +560,84 @@ function stripe_woocommerce_addon_activate() {
 	}
 }
 register_activation_hook( __FILE__, 'stripe_woocommerce_addon_activate' );
+/*Activation hook*/
+
+/*Plugin Settings Link*/
+
+
+function stripe_woocommerce_addon_settings_link( $links ) {
+    $settings_link = '<a href="admin.php?page=wc-settings&tab=checkout&section=wc_stripe_gateway">' . __( 'Settings' ) . '</a>';
+    array_push( $links, $settings_link );
+  	return $links;
+}
+$plugin = plugin_basename( __FILE__ );
+add_filter( "plugin_action_links_$plugin", 'stripe_woocommerce_addon_settings_link' );
+/*Plugin Settings Link*/
+
+/*Capture Charge*/
+
+function stripe_capture_meta_box() {
+	global $post;
+	$chargestatus = get_post_meta( $post->ID, '_stripe_charge_status', true );
+	if($chargestatus == 'charge_auth_only')
+	{
+			add_meta_box(
+				'stripe_capture_chargeid',
+				__( 'Capture Charge', 'woocommerce' ),
+				'stripe_capture_meta_box_callback',
+				'shop_order',
+				'side',
+				'default'
+			);
+	}
+}
+add_action( 'add_meta_boxes', 'stripe_capture_meta_box' );
+
+
+function stripe_capture_meta_box_callback( $post ) {
+
+	//charge_auth_only, charge_auth_captured, charge_auth_captured_later
+	echo '<input type="checkbox" name="_stripe_capture_charge" value="1"/>&nbsp;Check & Save Order to Capture';
+}
+
+
+/*Execute charge on order save*/
+function stripe_capture_meta_box_action($order_id, $items )
+{
+	if(isset($items['_stripe_capture_charge']) && (1 ==$items['_stripe_capture_charge']) ) 
+	{
+		global $post;
+		$chargeid = get_post_meta( $post->ID, '_transaction_id', true );
+		if(class_exists('WC_Stripe_Gateway'))
+		{
+			$stripepg = new WC_Stripe_Gateway();
+
+			if('yes'  == $stripepg->stripe_sandbox  )
+			{ Stripe::setApiKey($stripepg->stripe_testsecretkey);  }
+			else
+			{ Stripe::setApiKey($stripepg->stripe_livesecretkey);  }
+
+		}
+
+
+		$capturecharge   = Stripe_Charge::retrieve($chargeid);
+		$captureresponse = $capturecharge->capture();
+
+		
+		if(true == $captureresponse->captured && true == $captureresponse->paid)
+		{
+			$epoch     = $captureresponse->created;
+			$dt        = new DateTime("@$epoch"); 
+			$timestamp = $dt->format('Y-m-d H:i:s e');
+
+			$wc_order = new WC_Order($order_id);
+			update_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_captured_later');
+			$wc_order->add_order_note(__( 'Stripe charge captured at-'.$timestamp.'-with Charge ID='.$captureresponse->id ,'woocommerce'));
+			unset($wc_order);
+		}
+
+	}	
+
+}
+add_action ("woocommerce_saved_order_items", "stripe_capture_meta_box_action", 10,2);
+/*Execute charge on order save*/
