@@ -50,7 +50,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->stripe_cardtypes         = $this->get_option( 'stripe_cardtypes');
 		$this->stripe_enable_for_methods= $this->get_option( 'stripe_enable_for_methods', array() );
 		$this->stripe_meta_cartspan     = $this->get_option( 'stripe_meta_cartspan');
-		//$this->stripe_saved_cards       = $this->get_option( 'stripe_saved_cards') ;
+		
 		$this->stripe_zerodecimalcurrency      = array("BIF","CLP","DJF","GNF","JPY","KMF","KRW","MGA","PYG","RWF","VND","VUV","XAF","XOF","XPF");
 		
 			
@@ -68,7 +68,7 @@ if(class_exists('WC_Payment_Gateway'))
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		}
 		
-			//add_action( 'woocommerce_credit_card_form_end', array( $this, 'stripe_after_card_form' ) );
+		
 		}
 
 		public function admin_options()
@@ -433,7 +433,7 @@ if(class_exists('WC_Payment_Gateway'))
 				
 			     )
 			);
-			//echo '<pre>' ; 	print_r($charge); var_dump($charge); die;
+			
 			if($token_id->id !='')
 			{
 			  if ($charge->paid == true) 
