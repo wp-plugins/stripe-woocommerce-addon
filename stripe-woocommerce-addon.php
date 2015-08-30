@@ -409,7 +409,7 @@ if(class_exists('WC_Payment_Gateway'))
 				'capture'				=> STRIPE_TRANSACTION_MODE,
 				'statement_descriptor'  => 'Order#'.$wc_order->get_order_number(),
 				'metadata' 				=> array(
-											'Order #' 	  		=> $order_id,
+											'Order #' 	  		=> $wc_order->get_order_number(),
 											'Total Tax'      	=> $wc_order->get_total_tax(),
 											'Total Shipping' 	=> $wc_order->get_total_shipping(),
 											'Customer IP'	  	=> $this->get_client_ip(),
