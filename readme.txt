@@ -2,7 +2,7 @@
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce plugin stripe,woocommerce addon stripe, stripe for woocommerce,stripe payment in wordpress,stripe payment gateway for woocommerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin,stripe payment gateway for woocommerce,woocommerce credit cards payment with stripe,saved card for woocommerce,saved card stripe,stripe payment refunds
+Tags: woocommerce plugin stripe,woocommerce addon stripe,stripe for woocommerce,stripe payment in wordpress,stripe payment gateway for woocommerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin,stripe payment gateway for woocommerce,woocommerce credit cards payment with stripe,saved card for woocommerce,saved card stripe,stripe payment refunds
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
