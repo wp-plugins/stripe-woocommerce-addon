@@ -19,25 +19,25 @@ License: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin acts as an addon for woocommerce to add a payment method for WooCommerce for accepting **Credit Cards Payments** by merchants via **Stripe** directly on checkout page.
 This plugin uses Stripe API version  **2015-09-03** to create tokens and charge credit cards. For better visualization of how it looks & works check screenshots tab.
 
-The **<a href="https://www.intubus.com/file/15173">Paid Version</a>** supports saving of cards securely on Stripe for future checkouts and only stores stripe customer id locally which is used to fetch list of cards dynamically on checkout form. All support related to paid version should be communicated on email provided on plugin file.
+The **<a href="https://www.intubus.com/file/15173">Paid Version</a>** supports saving of cards securely on Stripe for future checkouts and only stores stripe customer id locally. All support related to paid version should be communicated via messege box on Paid plugin page.
 
 = Features =
-1. Very Simple Clean Code plugin to add a Stripe payment method to woocommerce
+1. Simple Clean Code to accept Credit cards via Stripe in woocommerce
 2. No technical skills needed.
 3. Prerequisite visualized on screenshots.
 4. Adds Charde Id and Charge time to Order Note.
 5. This plugin can be customized easily.
 6. This plugin bundles with <a href="https://github.com/stripe/stripe-php">Official Stripe® API Libraries</a> Version 1.18.0 to support PHP 5.2 Compatibility.
-7. This plugin Can work with Sandbox/Live mode of Stripe accounts Single checkbox to put it in live/test mode.
+7. Single checkbox to set plugin in Sandbox/Live mode.
 8. This plugin does not store **Credit Card Details**
 9. Uses Token method to charge Credit Cards rather sending sensitive card details to stripe directly as prescribed by Stripe.
 10. This plugin requires SSL on merchant site as described <a href="https://stripe.com/help/ssl">here</a>.
-11. This plugin suppports Authorize or Authorize and Capture with single checkbox to put it in Authorize or Authorize & Capture.
-12. This plugin suppports to accept the type of card you like.
+11. This plugin suppports Authorize / Authorize and Capture.
+12. This plugin suppports provides to accept the type of card you like.
 13. This plugin Support refunds **(Only in Cents)** in woocommerce interface
 14. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
-15. This plugin supports to enable alowed shipping method.
-16. This plugin supports dynamic cards logo based on cards allowed in Plugin settings
+15. This plugin supports provides to enable allowed shipping method.
+16. This plugin supports dynamic cards logo based on allowed cards in Plugin settings
 17. This plug-in supports the **<a href="http://www.cartspan.com/">CartSpan</a> QuickBooks accounting integration** by providing detailed payment methods for account reconciliation. This functionality is not available with any other payment gateway or WooCommerce accounting integration.
 
 Also See
