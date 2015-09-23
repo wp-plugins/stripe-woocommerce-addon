@@ -2,7 +2,7 @@
 Contributors: nazrulhassanmca
 Plugin Name: Stripe WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/stripe-woocommerce-addon/
-Tags: woocommerce plugin stripe,woocommerce addon stripe,stripe for woocommerce,stripe payment in wordpress,stripe payment gateway for woocommerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin,stripe payment gateway for woocommerce,woocommerce credit cards payment with stripe,saved card for woocommerce,saved card stripe,stripe payment refunds
+Tags: woocommerce plugin stripe,woocommerce addon stripe,stripe for woocommerce,stripe payment in wordpress,stripe payment gateway for woocommerce,woocommerce stripe gateway download,stripe plugin for woocommerce,stripe woocommerce plugin,stripe payment gateway for woocommerce,woocommerce credit cards payment with stripe,saved card for woocommerce,saved card stripe,stripe payment refunds,stripe woocommerce addon,credit cards payment stripe and woocommerce,free stripe woocommerce plugin
 Author URI: https://nazrulhassan.wordpress.com/
 Author: nazrulhassanmca
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Stripe+Woocommerce+Addon
@@ -19,7 +19,7 @@ License: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin acts as an addon for woocommerce to add a payment method for WooCommerce for accepting **Credit Cards Payments** by merchants via **Stripe** directly on checkout page.
 This plugin uses Stripe API version  **2015-09-03** to create tokens and charge credit cards. For better visualization of how it looks & works check screenshots tab.
 
-The **<a href="https://www.intubus.com/file/15173">Paid Version</a>** supports saving of cards securely on Stripe for future checkouts and only stores stripe customer id locally. All support related to paid version should be communicated via messege box on Paid plugin page.
+
 
 = Features =
 1. Simple Clean Code to accept Credit cards via Stripe in woocommerce
@@ -38,16 +38,17 @@ The **<a href="https://www.intubus.com/file/15173">Paid Version</a>** supports s
 14. This plugin currently supports Multiple Currency accepted one at a time Irrespective of store base currency See Screenshot No.2
 15. This plugin supports provides to enable allowed shipping method.
 16. This plugin supports dynamic cards logo based on allowed cards in Plugin settings
-17. This plug-in supports the **<a href="http://www.cartspan.com/">CartSpan</a> QuickBooks accounting integration** by providing detailed payment methods for account reconciliation. This functionality is not available with any other payment gateway or WooCommerce accounting integration.
+17. Pro Version supports saved card for future checkout.
+18. This plug-in supports the **<a href="http://www.cartspan.com/">CartSpan</a> QuickBooks accounting integration** by providing detailed payment methods for account reconciliation. This functionality is not available with any other payment gateway or WooCommerce accounting integration.
 
 Also See
 
 	1. https://support.stripe.com/questions/which-currencies-does-stripe-support
 	
 
-=Video=
+=Pro Version Video=
 
-https://www.youtube.com/watch?v=F4zxqTsCrQM&feature=youtu.be
+https://www.youtube.com/watch?v=Q1LXMQsVuaA
 
 == Screenshots ==
 

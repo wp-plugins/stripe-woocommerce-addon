@@ -458,15 +458,6 @@ if(class_exists('WC_Payment_Gateway'))
 				 add_post_meta( $order_id, '_stripe_metas_for_cartspan', $stripe_metas_for_cartspan);
 			    }
 
-			    if(true == $charge->captured && true == $charge->paid)
-			    {
-			    	add_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_captured');
-			    }
-
-			    if(false == $charge->captured && true == $charge->paid)
-			    {
-			    	add_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_only');
-			    }
 
 				return array (
 				  'result'   => 'success',
@@ -573,71 +564,3 @@ function stripe_woocommerce_addon_settings_link( $links ) {
 $plugin = plugin_basename( __FILE__ );
 add_filter( "plugin_action_links_$plugin", 'stripe_woocommerce_addon_settings_link' );
 /*Plugin Settings Link*/
-
-/*Capture Charge*/
-
-function stripe_capture_meta_box() {
-	global $post;
-	$chargestatus = get_post_meta( $post->ID, '_stripe_charge_status', true );
-	if($chargestatus == 'charge_auth_only')
-	{
-			add_meta_box(
-				'stripe_capture_chargeid',
-				__( 'Capture Charge', 'woocommerce' ),
-				'stripe_capture_meta_box_callback',
-				'shop_order',
-				'side',
-				'default'
-			);
-	}
-}
-add_action( 'add_meta_boxes', 'stripe_capture_meta_box' );
-
-
-function stripe_capture_meta_box_callback( $post ) {
-
-	//charge_auth_only, charge_auth_captured, charge_auth_captured_later
-	echo '<input type="checkbox" name="_stripe_capture_charge" value="1"/>&nbsp;Check & Save Order to Capture';
-}
-
-
-/*Execute charge on order save*/
-function stripe_capture_meta_box_action($order_id, $items )
-{
-	if(isset($items['_stripe_capture_charge']) && (1 ==$items['_stripe_capture_charge']) ) 
-	{
-		global $post;
-		$chargeid = get_post_meta( $post->ID, '_transaction_id', true );
-		if(class_exists('WC_Stripe_Gateway'))
-		{
-			$stripepg = new WC_Stripe_Gateway();
-
-			if('yes'  == $stripepg->stripe_sandbox  )
-			{ Stripe::setApiKey($stripepg->stripe_testsecretkey);  }
-			else
-			{ Stripe::setApiKey($stripepg->stripe_livesecretkey);  }
-
-		}
-
-
-		$capturecharge   = Stripe_Charge::retrieve($chargeid);
-		$captureresponse = $capturecharge->capture();
-
-		
-		if(true == $captureresponse->captured && true == $captureresponse->paid)
-		{
-			$epoch     = $captureresponse->created;
-			$dt        = new DateTime("@$epoch"); 
-			$timestamp = $dt->format('Y-m-d H:i:s e');
-
-			$wc_order = new WC_Order($order_id);
-			update_post_meta( $order_id, '_stripe_charge_status', 'charge_auth_captured_later');
-			$wc_order->add_order_note(__( 'Stripe charge captured at-'.$timestamp.'-with Charge ID='.$captureresponse->id ,'woocommerce'));
-			unset($wc_order);
-		}
-
-	}	
-
-}
-add_action ("woocommerce_saved_order_items", "stripe_capture_meta_box_action", 10,2);
-/*Execute charge on order save*/
